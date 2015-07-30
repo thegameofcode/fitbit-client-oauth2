@@ -1,0 +1,21 @@
+{
+  "name": "fitbit-client-oauth2",
+  "version": "1.0.0",
+  "description": "A fitbit client using OAuth 2.0 authentication.",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type" : "git",
+    "url" : "https://github.com/IGZgustavomarin/fitbit-client-oauth2.git"
+  },
+  "author": "Gustavo Marin",
+  "license": "MIT",
+  "dependencies": {
+    "object-assign": "^3.0.0",
+    "promise": "^7.0.3",
+    "request-promise": "^0.4.3",
+    "simple-oauth2": "^0.2.1"
+  }
+}
