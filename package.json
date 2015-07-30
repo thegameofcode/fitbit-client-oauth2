@@ -7,10 +7,19 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
-    "type" : "git",
-    "url" : "https://github.com/IGZgustavomarin/fitbit-client-oauth2.git"
+    "type": "git",
+    "url": "git+https://github.com/IGZgustavomarin/fitbit-client-oauth2.git"
   },
+  "keywords": [
+    "fitbit",
+    "oauth2"
+  ],
   "author": "Gustavo Marin",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/IGZgustavomarin/fitbit-client-oauth2/issues"
+  },
+  "homepage": "https://github.com/IGZgustavomarin/fitbit-client-oauth2#readme",
   "license": "MIT",
   "dependencies": {
     "object-assign": "^3.0.0",
