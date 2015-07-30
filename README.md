@@ -45,3 +45,11 @@ client.getTimeSeries().then(function(res) {
  * Add token expiration event to the client (EventEmitter).
  * Implement automatic retries on token expiration errors
 
+## Other implementations
+
+This package exists because Fitbit's newest endpoints works only with OAuth 2.0 and all other existing packages works only with OAuth 1.0. Some examples:
+
+- [fitbit-node](https://github.com/lukasolson/fitbit-node)
+- [fitbit-js](https://github.com/smurthas/fitbit-js)
+- [node-fitbit](https://github.com/p-m-p/node-fitbit)
+
