@@ -40,7 +40,7 @@ client.getTimeSeries().then(function(res) {
 
 ## TODO
 
- * Implement full OAuth authorization code flow. (now it relays on [passport-fitbit-oauth2](https://github.com/IGZgustavomarin/passport-fitbit-oauth2)).
+ * Implement full OAuth authorization code flow. (now it relays on [passport-fitbit-oauth2](https://github.com/thegameofcode/passport-fitbit-oauth2)).
  * Cover more of the Fitbit API endpoints
  * Add token expiration event to the client (EventEmitter).
  * Implement automatic retries on token expiration errors
