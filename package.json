@@ -20,8 +20,8 @@
     "url": "https://github.com/thegameofcode/fitbit-client-oauth2/issues"
   },
   "homepage": "https://github.com/thegameofcode/fitbit-client-oauth2#readme",
-  "license": "MIT",
   "dependencies": {
+    "moment": "^2.10.6",
     "object-assign": "^3.0.0",
     "promise": "^7.0.3",
     "request-promise": "^0.4.3",

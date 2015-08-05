@@ -53,6 +53,15 @@ proto.refreshAccessToken = function(options) {
   });
 };
 
+
+proto.getDailyActivitySummary = function(options) {
+  options = helper.buildDailyActivitySummaryOptions(options);
+
+  //TODO: improve this way of getting the token
+  options.access_token = this.token.token.access_token;
+  return helper.createRequestPromise(options);
+
+};
 proto.getTimeSeries = function(options) {
   options = helper.buildTimeSeriesOptions(options);
 

@@ -1,24 +1,33 @@
 var assign = require('object-assign');
 var request = require('request-promise');
+var moment = require('moment');
 
 var config = require('./config');
 
 module.exports = {
   createRequestPromise: createRequestPromise,
   buildTimeSeriesOptions: buildTimeSeriesOptions,
-  buildIntradayTimeSeriesOptions: buildIntradayTimeSeriesOptions
+  buildIntradayTimeSeriesOptions: buildIntradayTimeSeriesOptions,
+  buildDailyActivitySummaryOptions: buildDailyActivitySummaryOptions
 };
 
 function createRequestPromise(options) {
-  return request.get({
+  var acceptLanguage = options.units === 'METRIC' ? 'es_ES' : 'en_US';
+  options = assign({
     url: options.url,
     method: 'GET',
     json: true,
     headers: {
-      Authorization: 'Bearer ' + options.access_token
+      Authorization: 'Bearer ' + options.access_token,
+      'Accept-Language': acceptLanguage
     }
-  }).then(function(res) {
-    res.requestedResource = options.resourcePath.replace('/', '-');
+  }, options);
+
+  delete options.units;
+  return request.get(options).then(function(res) {
+    if (options.resourcePath) {
+      res.requestedResource = options.resourcePath.replace('/', '-');
+    }
     return res;
   });
 }
@@ -30,7 +39,8 @@ function buildTimeSeriesOptions(options) {
     userId: '-',
     resourcePath: 'activities/steps',
     baseDate: 'today',
-    period: '1d'
+    period: '1d',
+    units: 'IMPERIAL'
   }, options);
 
   if (options.endDate) {
@@ -55,7 +65,8 @@ function buildIntradayTimeSeriesOptions(options) {
     resourcePath: 'activities/steps',
     startDate: 'today',
     endDate: 'today',
-    detailLevel: '1min'
+    detailLevel: '1min',
+    units: 'IMPERIAL'
   }, options);
 
   if (options.startTime && options.endTime) {
@@ -70,6 +81,20 @@ function buildIntradayTimeSeriesOptions(options) {
     .replace('{extra}', '')
     .replace('{startTime}', options.startTime)
     .replace('{endTime}', options.endTime);
+
+  return options;
+}
+
+function buildDailyActivitySummaryOptions(options) {
+  var uri = config.FITBIT_BASE_API_URL + '/1/user/{userId}/activities/date/{date}.json';
+
+  options = assign({
+    userId: '-',
+    date: moment().format('YYYY-MM-DD'),
+    units: 'IMPERIAL'
+  }, options);
+
+  options.uri = uri.replace('{userId}', options.userId).replace('{date}', options.date);
 
   return options;
 }
