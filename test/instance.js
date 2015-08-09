@@ -1,4 +1,3 @@
-var mocha = require('mocha');
 var expect = require('chai').expect;
 
 var FitbitClient = require('../src/client');
@@ -35,6 +34,5 @@ describe('FitbitClient class', function () {
     }
     expect(createEmptyClient).to.throw(Error, /Missing consumerSecret parameter/);
   });
-
 
 });

@@ -28,13 +28,14 @@ module.exports = function(proto) {
   proto.getToken = function(code, redirect_uri) {
 
     var authCode = this.oauth2.authCode;
+    var _this = this;
     return new Promise(function(resolve, reject) {
 
       authCode.getToken({
         code: code,
         redirect_uri: redirect_uri
       }, function(err, token) {
-        return err ? reject(err) : resolve(token);
+        return err ? reject(err) : resolve(_this.createToken(token));
       });
 
     });
