@@ -7,7 +7,7 @@ module.exports = function(proto) {
     token = this.createToken(token);
 
     //TODO: improve this way of getting the token
-    options.access_token = token.access_token;
+    options.access_token = token.token.access_token;
     return helper.createRequestPromise(options);
 
   };
@@ -17,7 +17,7 @@ module.exports = function(proto) {
     token = this.createToken(token);
 
     //TODO: improve this way of getting the token
-    options.access_token = token.access_token;
+    options.access_token = token.token.access_token;
     return helper.createRequestPromise(options);
 
   };
@@ -26,7 +26,8 @@ module.exports = function(proto) {
     options = helper.buildIntradayTimeSeriesOptions(options);
     token = this.createToken(token);
 
-    options.access_token = token.access_token;
+    //TODO: improve this way of getting the token
+    options.access_token = token.token.access_token;
     return helper.createRequestPromise(options);
   };
 
