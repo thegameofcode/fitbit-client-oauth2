@@ -4,7 +4,7 @@
   "description": "A fitbit client using OAuth 2.0 authentication.",
   "main": "src/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha --reporter spec"
   },
   "repository": {
     "type": "git",
@@ -26,5 +26,10 @@
     "promise": "^7.0.3",
     "request-promise": "^0.4.3",
     "simple-oauth2": "^0.2.1"
+  },
+  "devDependencies": {
+    "chai": "^3.2.0",
+    "mocha": "^2.2.5",
+    "nock": "^2.10.0"
   }
 }
