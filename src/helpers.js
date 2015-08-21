@@ -5,6 +5,7 @@ var moment = require('moment');
 var config = require('./config');
 
 module.exports = {
+  createOptions: createOptions,
   createRequestPromise: createRequestPromise,
   buildTimeSeriesOptions: buildTimeSeriesOptions,
   buildIntradayTimeSeriesOptions: buildIntradayTimeSeriesOptions,
@@ -32,7 +33,7 @@ function createRequestPromise(options) {
   });
 }
 
-function buildTimeSeriesOptions(options) {
+function buildTimeSeriesOptions(client, options) {
   var url = config.FITBIT_BASE_API_URL + '/1/user/{userId}/{resourcePath}/date/{baseDate}/{period}.json';
 
   options = assign({
@@ -40,7 +41,7 @@ function buildTimeSeriesOptions(options) {
     resourcePath: 'activities/steps',
     baseDate: 'today',
     period: '1d',
-    units: 'IMPERIAL'
+    units: client.units
   }, options);
 
   if (options.endDate) {
@@ -55,7 +56,7 @@ function buildTimeSeriesOptions(options) {
   return options;
 }
 
-function buildIntradayTimeSeriesOptions(options) {
+function buildIntradayTimeSeriesOptions(client, options) {
   var url = config.FITBIT_BASE_API_URL + '/1/user/{userId}/{resourcePath}/date/{startDate}/{endDate}/{detailLevel}{extra}.json';
 
   var extra = '/time/{startTime}/{endTime}';
@@ -66,7 +67,7 @@ function buildIntradayTimeSeriesOptions(options) {
     startDate: 'today',
     endDate: 'today',
     detailLevel: '1min',
-    units: 'IMPERIAL'
+    units: client.units
   }, options);
 
   if (options.startTime && options.endTime) {
@@ -85,16 +86,30 @@ function buildIntradayTimeSeriesOptions(options) {
   return options;
 }
 
-function buildDailyActivitySummaryOptions(options) {
+function buildDailyActivitySummaryOptions(client, options) {
   var uri = config.FITBIT_BASE_API_URL + '/1/user/{userId}/activities/date/{date}.json';
 
   options = assign({
     userId: '-',
     date: moment().format('YYYY-MM-DD'),
-    units: 'IMPERIAL'
+    units: client.units
   }, options);
 
   options.uri = uri.replace('{userId}', options.userId).replace('{date}', options.date);
+
+  return options;
+}
+
+function createOptions(base, options, token) {
+  options = assign(base, options || {});
+
+  if (options.uri) {
+    options.uri = config.FITBIT_BASE_API_URL + options.uri;
+  }
+
+  if (token){
+    options.access_token = token.token.access_token;
+  }
 
   return options;
 }

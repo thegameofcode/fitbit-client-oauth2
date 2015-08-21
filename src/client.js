@@ -28,6 +28,7 @@ var FitbitClient = function(clientId, consumerSecret, options) {
 
   this.redirect_uri = options.redirect_uri;
   this.scope = options.scope || config.FITBIT_DEFAULT_SCOPE;
+  this.units = options.units || 'IMPERIAL';
 
 };
 

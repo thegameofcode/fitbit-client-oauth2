@@ -6,7 +6,8 @@ module.exports = function(proto) {
   activities.addFeatures(proto);
 
   proto.getTimeSeries = function(token, options) {
-    options = helper.buildTimeSeriesOptions(options);
+    options.units = this.units;
+    options = helper.buildTimeSeriesOptions(this, options);
     token = this.createToken(token);
 
     //TODO: improve this way of getting the token
@@ -16,7 +17,7 @@ module.exports = function(proto) {
   };
 
   proto.getIntradayTimeSeries = function(token, options) {
-    options = helper.buildIntradayTimeSeriesOptions(options);
+    options = helper.buildIntradayTimeSeriesOptions(client, options);
     token = this.createToken(token);
 
     //TODO: improve this way of getting the token

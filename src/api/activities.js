@@ -1,10 +1,9 @@
-var config = require('../config');
 var helper = require('../helpers');
 
 function addFeatures(proto) {
 
   proto.getDailyActivitySummary = function(token, options) {
-    options = helper.buildDailyActivitySummaryOptions(options);
+    options = helper.buildDailyActivitySummaryOptions(this, options);
     token = this.createToken(token);
 
     options.access_token = token.token.access_token;
@@ -16,10 +15,10 @@ function addFeatures(proto) {
     // GET https://api.fitbit.com/1/activities.json
     token = this.createToken(token);
 
-    options = options || {};
-    options.units = options.unit || 'IMPERIAL';
-    options.uri = config.FITBIT_BASE_API_URL + '/1/activities.json';
-    options.access_token = token.token.access_token;
+    options = helper.createOptions({
+      units: this.units,
+      uri: '/1/activities.json'
+    }, options, token);
 
     return helper.createRequestPromise(options);
   };
@@ -30,10 +29,11 @@ function addFeatures(proto) {
 
     // options:  userId, beforeDate, afterDate, sort, offset, limit
 
-    options = options || {};
-    options.units = options.unit || 'IMPERIAL';
-    options.uri = config.FITBIT_BASE_API_URL + '/1/user/-/activities/list.json';
-    options.access_token = token.token.access_token;
+    options = helper.createOptions({
+      userId: '-',
+      units: this.units,
+      uri: '/1/user/-/activities/list.json'
+    }, options, token);
 
     return helper.createRequestPromise(options);
 
@@ -43,17 +43,25 @@ function addFeatures(proto) {
     // GET https://api.fitbit.com/1/activities/[activity-id].json
     token = this.createToken(token);
 
-    options = options || {};
-    options.units = options.unit || 'IMPERIAL';
-    options.uri = config.FITBIT_BASE_API_URL + '/1/activities/{activity-id}.json'.replace('{activity-id}', options.activityId);
-    options.access_token = token.token.access_token;
+    options = helper.createOptions({
+      units: this.units,
+      uri: '/1/activities/{activity-id}.json'.replace('{activity-id}', options.activityId)
+    }, options, token);
 
     return helper.createRequestPromise(options);
 
   };
 
   proto.getFrequentActivities = function(token, options) {
+    // GET https://api.fitbit.com/1/user/-/activities/frequent.json
+    token = this.createToken(token);
 
+    options = helper.createOptions({
+      units: this.units,
+      uri: '/1/user/-/activities/frequent.json'
+    }, options, token);
+
+    return helper.createRequestPromise(options);
   };
 
   proto.getRecentActivities = function(token, options) {
