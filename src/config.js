@@ -1,4 +1,4 @@
-const FITBIT_BASE_API_URL = 'https://api.fitbit.com';
+const FITBIT_BASE_API_URL = 'https://fitbit.com';
 const FITBIT_AUTH_PATH = '/oauth2/authorize';
 const FITBIT_TOKEN_PATH = '/oauth2/token';
 const FITBIT_DEFAULT_SCOPE = [ 'activity', 'nutrition', 'profile', 'settings', 'sleep', 'social', 'weight' ];
