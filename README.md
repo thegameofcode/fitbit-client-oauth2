@@ -1,8 +1,14 @@
 # Fitbit client
 
+[![npm version](https://badge.fury.io/js/fitbit-client-oauth2.svg)](http://badge.fury.io/js/fitbit-client-oauth2)
+[![Circle CI](https://circleci.com/gh/thegameofcode/fitbit-client-oauth2.svg?style=svg)](https://circleci.com/gh/thegameofcode/fitbit-client-oauth2)
+
 An OAuth 2.0 client to consume [Fitbit's API](http://www.fitbit.com/). 
 
 **WARNING**: Every release should be usable and stable, but it is a Work in Progress until all Fitbit's API is covered. 
+
+[![NPM](https://nodei.co/npm/fitbit-client-oauth2.png?downloads=true)](https://nodei.co/npm/fitbit-client-oauth2/)
+
 
 ## Usage
 
