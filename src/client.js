@@ -26,6 +26,15 @@ var FitbitClient = function(clientId, consumerSecret, options) {
     useBasicAuthorizationHeader: true
   });
 
+  this.oauth2_token = oauth2({
+    clientID: clientId,
+    clientSecret: consumerSecret,
+    site: config.FITBIT_BASE_API_URL_TOKEN,
+    authorizationPath: config.FITBIT_AUTH_PATH,
+    tokenPath: config.FITBIT_TOKEN_PATH,
+    useBasicAuthorizationHeader: true
+  });
+
   this.redirect_uri = options.redirect_uri;
   this.scope = options.scope || config.FITBIT_DEFAULT_SCOPE;
 

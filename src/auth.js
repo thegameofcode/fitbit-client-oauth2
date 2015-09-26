@@ -8,7 +8,7 @@ module.exports = function(proto) {
       return tokenObj;
     }
 
-    return this.oauth2.accessToken.create(tokenObj);
+    return this.oauth2_token.accessToken.create(tokenObj);
   };
 
   proto.getAuthorizationUrl = function(redirect_uri, scope, state) {
@@ -27,7 +27,7 @@ module.exports = function(proto) {
 
   proto.getToken = function(code, redirect_uri) {
 
-    var authCode = this.oauth2.authCode;
+    var authCode = this.oauth2_token.authCode;
     var _this = this;
     return new Promise(function(resolve, reject) {
 
