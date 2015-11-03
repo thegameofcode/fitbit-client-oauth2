@@ -33,7 +33,7 @@ function createRequestPromise(options) {
 }
 
 function buildTimeSeriesOptions(options) {
-  var url = config.FITBIT_BASE_API_URL + '/1/user/{userId}/{resourcePath}/date/{baseDate}/{period}.json';
+  var url = config.FITBIT_BASE_API_URL_TOKEN + '/1/user/{userId}/{resourcePath}/date/{baseDate}/{period}.json';
 
   options = assign({
     userId: '-',
@@ -56,7 +56,7 @@ function buildTimeSeriesOptions(options) {
 }
 
 function buildIntradayTimeSeriesOptions(options) {
-  var url = config.FITBIT_BASE_API_URL + '/1/user/{userId}/{resourcePath}/date/{startDate}/{endDate}/{detailLevel}{extra}.json';
+  var url = config.FITBIT_BASE_API_URL_TOKEN + '/1/user/{userId}/{resourcePath}/date/{startDate}/{endDate}/{detailLevel}{extra}.json';
 
   var extra = '/time/{startTime}/{endTime}';
 
@@ -86,7 +86,7 @@ function buildIntradayTimeSeriesOptions(options) {
 }
 
 function buildDailyActivitySummaryOptions(options) {
-  var uri = config.FITBIT_BASE_API_URL + '/1/user/{userId}/activities/date/{date}.json';
+  var uri = config.FITBIT_BASE_API_URL_TOKEN + '/1/user/{userId}/activities/date/{date}.json';
 
   options = assign({
     userId: '-',
