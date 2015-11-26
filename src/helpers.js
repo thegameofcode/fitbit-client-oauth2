@@ -70,7 +70,7 @@ function buildIntradayTimeSeriesOptions(options) {
   }, options);
 
   if (options.startTime && options.endTime) {
-    url.replace('{extra}', extra);
+    url = url.replace('{extra}', extra);
   }
 
   options.url = url.replace('{userId}', options.userId)
