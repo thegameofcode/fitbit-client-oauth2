@@ -22,14 +22,14 @@
   "homepage": "https://github.com/thegameofcode/fitbit-client-oauth2#readme",
   "dependencies": {
     "moment": "^2.10.6",
-    "object-assign": "^3.0.0",
+    "object-assign": "^4.0.1",
     "promise": "^7.0.3",
-    "request-promise": "^0.4.3",
+    "request-promise": "^1.0.2",
     "simple-oauth2": "^0.2.1"
   },
   "devDependencies": {
-    "chai": "^3.2.0",
-    "mocha": "^2.2.5",
-    "nock": "^2.10.0"
+    "chai": "^3.4.1",
+    "mocha": "^2.3.4",
+    "nock": "^3.3.2"
   }
 }
