@@ -64,7 +64,7 @@ Every method of the API needs a valid token object with these properties:
 ``` 
     var client = new FitbitClient(<YOUR_FITBIT_API_KEY>, <YOUR_FITBIT_API_SECRET>);
     var redirect_uri = 'http://redirect_uri_used_in_fitbit_app_website';
-    var scope =  [ 'activity', 'nutrition', 'profile', 'settings', 'sleep', 'social', 'weight' ];
+    var scope =  'activity nutrition profile settings sleep social weight';
     
     server.get('/auth/fitbit', function(req, res, next) {
     
